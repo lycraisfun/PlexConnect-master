@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+  <head>
+    <script src="{{URL(:/js/utils.js)}}" />
+    <script src="{{URL(:/js/settings.js)}}" />
+  </head>
+  
+  <body>
+    <listWithPreview id="SettingsPage">
+      <header>
+        <simpleHeader>
+          <title>Settings</title>
+        </simpleHeader>
+      </header>
+      <preview>
+        <keyedPreview> 
+          <title>&#x00AD;<!--soft-hyphen--></title>
+          <summary/>
+          <metadataKeys>
+            <label>Version</label>
+            <label>Authors</label>
+            <label>Wiki/Docs</label>
+            <label>Homepage</label>
+            <label>Forum</label>
+          </metadataKeys>
+          <metadataValues>
+            <label>Alpha</label>
+            <label>Baa, roidy</label>
+            <label>f00b4r</label>
+            <label>https://github.com/ibaa/plexconnect</label>
+            <label>http://forums.plexapp.com/index.php/forum/136-appletv-plexconnect/</label>
+          </metadataValues>
+          <image>{{URL(:/thumbnails/PlexConnectLogo.jpg)}}</image>
+        </keyedPreview> 
+      </preview>
+      
+      <menu>
+        <sections>
+          <menuSection>
+            <header>
+              <horizontalDivider alignment="left">
+                <title>Appearance</title>
+              </horizontalDivider>
+            </header>
+            <items>
+              <oneLineMenuItem id="MovieView" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsMovies')">
+                <label>Movie Options</label>
+                <accessories>
+                  <arrow/>
+                </accessories>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="ShowView" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsTVShows')">
+                <label>TV Show Options</label>
+                <accessories>
+                  <arrow/>
+                </accessories>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="VideoOSD" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsVideoOSD')">
+                <label>Video Player OSD</label>
+                <accessories>
+                  <arrow/>
+                </accessories>
+              </oneLineMenuItem>
+            </items>
+          </menuSection>
+          <menuSection>
+            <header>
+              <horizontalDivider alignment="left">
+                <title>Transcoder</title>
+              </horizontalDivider>
+            </header>
+            <items>
+              <oneLineMenuItem id="ForceDirectPlay" onSelect="toggleSettings('ForceDirectPlay', 'Settings')">
+                <label>Force Direct Play</label>
+                <rightLabel>{{SETTING(forcedirectplay)}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="ForceTranscode" onSelect="toggleSettings('ForceTranscode', 'Settings')">
+                <label>Force Transcode</label>
+                <rightLabel>{{SETTING(forcetranscode)}}</rightLabel>
+              </oneLineMenuItem>
+							<oneLineMenuItem id="TranscodeQuality" onSelect="toggleSettings('TranscodeQuality', 'Settings')">
+                <label>Transcoder Quality</label>
+                <rightLabel>{{SETTING(transcodequality)}}</rightLabel>
+              </oneLineMenuItem>
+							<oneLineMenuItem id="SubtitleSize" onSelect="toggleSettings('SubtitleSize', 'Settings')">
+                <label>Subtitle Size %</label>
+                <rightLabel>{{SETTING(subtitlesize)}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="AudioBoost" onSelect="toggleSettings('AudioBoost', 'Settings')">
+                <label>Audio Boost %</label>
+                <rightLabel>{{SETTING(audioboost)}}</rightLabel>
+              </oneLineMenuItem>
+            </items>
+          </menuSection>
+          <menuSection>
+            <header>
+              <horizontalDivider alignment="left">
+                <title>Plex Media Server</title>
+              </horizontalDivider>
+            </header>
+            <items>
+              <oneLineMenuItem id="discover" onSelect="discover('discover','PMS_uuid')">
+                <label>Discover</label>
+                <rightLabel>Plex Media Servers: {{PMSCOUNT()}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="PMS_uuid" onSelect="toggleSettings('PMS_uuid', 'Settings')">
+                <label>PMS</label>
+                <rightLabel>{{PMSNAME()}}</rightLabel>
+              </oneLineMenuItem>              
+              <oneLineMenuItem id="refreshLibrary" onSelect="refreshLibrary('{{ADDR_PMS()}}')">
+                <label>Refresh Library</label>
+              </oneLineMenuItem>
+            </items>
+          </menuSection>
+        </sections>
+      </menu>
+    </listWithPreview>
+  </body>
+</atv>
